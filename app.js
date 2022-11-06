@@ -6,6 +6,8 @@ import fs from 'fs';
 import cors from 'cors';
 import { request, gql } from 'graphql-request'
 
+
+import { example } from './example.js';
 //import requestFunc from './request.js'
 
 const url = "http://localhost:5000/graphql";
@@ -19,7 +21,7 @@ function getActById(id) {
     return query
 }
 
-// the splitter function, used by the service
+// the function, used by the service
 function main(args, callback) {
     const id = args.id;
     request(url, getActById(id))
@@ -28,6 +30,12 @@ function main(args, callback) {
             callback({
                 result: act
             });
+        })
+        .catch(error => {
+            console.log(error)
+            callback({
+                result:example
+            })
         })
 }
 
