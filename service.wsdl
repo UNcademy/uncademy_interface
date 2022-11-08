@@ -23,7 +23,21 @@
       <s:element name="Response">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="result" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="courseName" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="teacherName" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="currentDate" type="s:date"/>
+            <s:element minOccurs="1" maxOccurs="unbounded" name="gradesList">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" name="group_id" type="s:string"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="student_name" type="s:string"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="final_grade" type="s:string"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="absences" type="s:int"/>
+                  <s:element minOccurs="1" maxOccurs="1" name="approved" type="s:string"/>
+                  <s:element minOccurs="0" maxOccurs="1" name="reason" type="s:string"/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -76,12 +90,12 @@
   <!-- SERVICE:  -->
   <wsdl:service name="MessageSplitterService">
     <wsdl:port name="MessageSplitterServiceSoapPort" binding="tns:MessageSplitterServiceSoapBinding">
-      <!-- <soap:address location="https://lalu-soap-dot-lalu-storage.uc.r.appspot.com/wsdl"/> -->
-      <soap12:address location="http://localhost:8000/wsdl"/>
+      <soap:address location="http://localhost:8000/wsdl"/>
+      <!-- <soap12:address location="https://uncademyinterface.team-uncademy.repl.co/wsdl"/> -->
     </wsdl:port>
     <wsdl:port name="MessageSplitterServiceSoap12Port" binding="tns:MessageSplitterServiceSoap12Binding">
-      <!-- <soap12:address location="https://lalu-soap-dot-lalu-storage.uc.r.appspot.com/wsdl"/> -->
       <soap12:address location="http://localhost:8000/wsdl"/>
+      <!-- <soap12:address location="https://uncademyinterface.team-uncademy.repl.co/wsdl"/> -->
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

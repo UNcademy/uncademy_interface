@@ -12,21 +12,31 @@ import { example } from './example.js';
 
 const url = "http://localhost:5000/graphql";
 
-function getActById(id) {
+function getActInformationById(id) {
     const query = gql `{
-            getAct(actId:${id}){
-                message
-            }
-        }`
+        getActInformation(groupId:${id}){
+          courseName
+          teacherName
+          currentDate
+          gradesList{
+            group_id
+            student_name
+            final_grade
+            absences
+            approved
+            reason
+          }
+        }
+      }`
     return query
 }
 
 // the function, used by the service
 function main(args, callback) {
     const id = args.id;
-    request(url, getActById(id))
+    request(url, getActInformationById(id))
         .then((data) => {
-            const act = data.getAct.message;
+            const act = data.getActInformation;
             callback({
                 result: act
             });
@@ -34,7 +44,7 @@ function main(args, callback) {
         .catch(error => {
             console.log(error)
             callback({
-                result:example
+                example
             })
         })
 }
