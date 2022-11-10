@@ -2,7 +2,7 @@
 import soap from 'soap';
 
 //const url = 'http://localhost:8000/wsdl?wsdl';
-const url = 'https://uncademyinterface.team-uncademy.repl.co/wsdl?wsdl';
+const url = 'https://92c6-186-29-56-149.ngrok.io/wsdl?wsdl';
 
 // Create client
 soap.createClient(url, function(err, client) {
@@ -14,7 +14,7 @@ soap.createClient(url, function(err, client) {
      * in the WSDL file
      */
     var args = {
-        id: 1
+        id: 3
     };
     // call the service
     client.MessageSplitter(args, function(err, res) {
