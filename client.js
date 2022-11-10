@@ -2,7 +2,8 @@
 import soap from 'soap';
 
 //const url = 'https://lalu-soap-dot-lalu-storage.uc.r.appspot.com/wsdl?wsdl';
-const url = 'http://localhost:8000/wsdl?wsdl';
+//const url = 'http://localhost:8000/wsdl?wsdl';
+const url = "https://2ftestinterface.team-uncademy.repl.co/wsdl?wsdl"
 
 // Create client
 soap.createClient(url, function(err, client) {

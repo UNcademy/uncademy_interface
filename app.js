@@ -8,7 +8,7 @@ import { request, gql } from 'graphql-request'
 
 
 import { example } from './example.js';
-//import requestFunc from './request.js'
+import consume from './request.js'
 
 const url = "http://localhost:5000/graphql";
 
@@ -62,7 +62,7 @@ app.get('/', function(req, res) {
 })
 
 //routes for consuming the other system
-//app.get('/consume/:id', requestFunc);
+app.get('/consume/:id', consume);
 
 // Launch the server and listen
 const port = 8000;
