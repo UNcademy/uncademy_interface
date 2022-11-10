@@ -1,8 +1,14 @@
 FROM node:14.17.4-stretch
-RUN mkdir /lalu_soap
-COPY /lalu_soap_src /lalu_soap
+# Create app directory
+WORKDIR /UNcademy_interface
 
-WORKDIR /lalu_soap
+# Install app dependencies
+COPY package.json /UNcademy_interface/
 RUN npm install
-EXPOSE 8000
+
+# Bundle app source
+COPY . /UNcademy_interface/
+
+EXPOSE 9000
+
 CMD ["npm", "run", "start"]
